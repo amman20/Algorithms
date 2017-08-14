@@ -46,23 +46,3 @@ public class napsack_problem {
     }
 
 }
-
-class Item {
-
-    private int weigth;
-    private double value;
-
-    public Item(int w, double v) {
-        this.weigth = w;
-        this.value = v;
-    }
-
-    public int getWeigth() {
-        return weigth;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-}
