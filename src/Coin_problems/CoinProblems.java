@@ -17,13 +17,16 @@ public class CoinProblems {
     //this is the input for geting max money for not adjacent C.
     static int[] C = {0, 5, 1, 2, 10, 6, 2};
     //the input for changeMaking
-
+    static int[] changes = {0, 1, 3, 4};
     //this is the input for getting maximum value if move right and down only.
     static int[][] board = {};
 
     public static void main(String[] args) {
         //Geting max money for not adjacent C
-        System.out.println(MaxMoneyNotAdjacent());
+//        System.out.println(MaxMoneyNotAdjacent());
+        System.out.println(ChangeMaking(6));
+
+
     }
 
     public static int MaxMoneyNotAdjacent() {
@@ -38,6 +41,27 @@ public class CoinProblems {
         }
 
         return F[F.length - 1];
+        //time complexity is O(n)
+    }
+
+    public static int ChangeMaking(int n) {
+        //n is the amount fo find it minimum change
+        int F[] = new int[n + 1];
+        //F[0] = 0 because if the amount is zero we don't need any change
+
+        //traverse all the coins
+        for (int i = 1; i < n + 1; i++) {
+            int temp = Integer.MAX_VALUE;
+            int j = 1;
+            //if j within the coins and the coin to add less or equal the amount
+            while (j <= changes.length - 1 && changes[j] <= i) {
+                temp = Math.min(temp, F[i - changes[j]]);
+                j++;
+            }
+            F[i] = temp + 1;
+        }
+        return F[n];
+        //time complexity is O(nm)
     }
 
 }
