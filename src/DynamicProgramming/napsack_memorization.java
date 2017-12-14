@@ -42,6 +42,8 @@ public class napsack_memorization {
             } else {
                 value = Math.max(MFKnapsack(i - 1, j), (int) items[i].getValue() + MFKnapsack(i - 1, j - items[i].getWeigth()));
             }
+        }else{
+            value = F[i][j];   
         }
         F[i][j] = value;
         return F[i][j];
